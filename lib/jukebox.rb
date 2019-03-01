@@ -32,13 +32,14 @@ end
 
 def play(songs)
   response = ""
-
-puts "Please enter a song name or number:"
+  
+# puts "Please enter a song name or number:"
   user_request = gets.chomp
   number_track = ""
   songs.each_with_index do |v,i|
     number_track = i + 1
-    
+
+
     if user_request == number_track.to_s || user_request == v
       response = "Playing #{v}"
     else
@@ -46,4 +47,10 @@ puts "Please enter a song name or number:"
     end
   end
 response
+end
+
+
+
+def exit_jukebox
+  puts "Goodbye"
 end
