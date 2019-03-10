@@ -1,3 +1,4 @@
+require "pry"
 songs = [
   "Phoenix - 1901",
   "Tokyo Police Club - Wait Up",
@@ -10,3 +11,55 @@ songs = [
   "Amos Lee - Keep It Loose, Keep It Tight"
 ]
 
+def help
+  puts "I accept the following commands:
+- help : displays this help message
+- list : displays a list of songs you can play
+- play : lets you choose a song to play
+- exit : exits this program"
+end
+
+def list(songs)
+  songs.each_with_index do |ls, idx|
+    puts "#{idx + 1}. #{ls},"
+  end
+end
+
+def play(songs)
+  puts "Please enter a song name or number:"
+  user_input = gets.chomp
+
+  songs.each do |i|
+    if i.include?(user_input) || user_input == (songs.index(i) + 1)
+      puts "Playing #{i}"
+    else
+      puts "Invalid input, please try again"
+    end
+  end
+end
+
+def exit_jukebox
+  puts "Goodbye"
+end
+
+def run(songs)
+  input = ""
+  while input != "exit"
+    puts "Please enter a command:"
+    input = gets.downcase.chomp
+
+    case input
+      when "list"
+        list(songs)
+      when "help"
+        help
+      when "play"
+        list(songs)
+        play(songs)
+      when "exit"
+        exit_jukebox
+      else
+        help
+    end
+  end
+end
