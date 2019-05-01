@@ -7,7 +7,7 @@ require_relative '../lib/jukebox'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  
+
   def capture_stdout(&block)
     original_stdout = $stdout
     $stdout = fake = StringIO.new
@@ -18,4 +18,4 @@ RSpec.configure do |config|
     end
     fake.string
   end
-end
+  end
